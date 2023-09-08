@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:local_marketplace/common/dependency_locator.dart';
 import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/routes/routes.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  setupLocator();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,14 +15,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      onGenerateRoute: generateRoute,
-      initialRoute: SellerRegistrationRoute,
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiProvider(
+      providers: const [],
+      child: MaterialApp(
+        onGenerateRoute: generateRoute,
+        initialRoute: RegistrationRoute,
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
       ),
     );
   }
