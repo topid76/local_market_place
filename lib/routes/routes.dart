@@ -11,6 +11,7 @@ import 'package:local_marketplace/screens/profile_page.dart';
 import 'package:local_marketplace/screens/product_registration.dart';
 import 'package:local_marketplace/screens/seller_registration_page.dart';
 import 'package:local_marketplace/screens/settings_page.dart';
+import 'package:local_marketplace/screens/view_page.dart';
 import 'package:local_marketplace/screens/welcome_page.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -35,6 +36,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => WelcomePage());
     case SellerRegistrationRoute:
       return MaterialPageRoute(builder: (_) => SellerRegistrationPage());
+    case ViewRoute:
+      return MaterialPageRoute(builder: (_) => ViewPage());
     default:
       return MaterialPageRoute(
           builder: (_) => const Scaffold(

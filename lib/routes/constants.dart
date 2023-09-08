@@ -8,3 +8,4 @@ const ProductRegistrationRoute = "/product-registration";
 const SettingsRoute = "/settings";
 const WelcomeRoute = "/welcome";
 const SellerRegistrationRoute = "/seller-registration";
+const ViewRoute = "/view";
