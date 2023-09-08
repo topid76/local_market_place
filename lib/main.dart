@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_marketplace/common/dependency_locator.dart';
+import 'package:local_marketplace/provider_setup.dart';
 import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/routes/routes.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: const [],
+      providers: [...appStateProviders],
       child: MaterialApp(
         onGenerateRoute: generateRoute,
         initialRoute: RegistrationRoute,
