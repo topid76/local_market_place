@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class myCard extends StatelessWidget {
@@ -24,89 +26,39 @@ class myCard extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(5)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Image.network(
-              img,
-              width: 150,
-              height: 150,
-              fit: BoxFit.contain,
+          Expanded(
+            flex: 2,
+            child: Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(img), fit: BoxFit.cover)),
             ),
-            SizedBox(
-              height: 30,
-            ),
-          ]),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 150,
-                child: Text(
-                  text,
-                  maxLines: 2,
-                  overflow: TextOverflow.fade,
-                  softWrap: false,
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+          ),
+          Expanded(
+              flex: 1,
+              child: Padding(
+                padding: EdgeInsets.all(5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(text),
+                    Text(location),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [Text('\$$price')],
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 150,
-                child: Text(
-                  price.toString(),
-                  maxLines: 2,
-                  overflow: TextOverflow.fade,
-                  softWrap: false,
-                  style: TextStyle(color: Colors.black, fontSize: 22),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Icon(Icons.star_border_outlined),
-              Icon(Icons.star_border_outlined),
-              Icon(Icons.star_border_outlined),
-              Icon(Icons.star_border_outlined),
-              Icon(Icons.star_border_outlined),
-              Text(
-                sold.toString(),
-                style: TextStyle(
-                    color: const Color.fromARGB(255, 113, 111, 111),
-                    fontSize: 15),
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 150,
-                child: Text(
-                  location,
-                  maxLines: 2,
-                  overflow: TextOverflow.fade,
-                  softWrap: false,
-                  style: TextStyle(color: Colors.black, fontSize: 22),
-                ),
-              ),
-            ],
-          ),
+              ))
         ],
       ),
     );

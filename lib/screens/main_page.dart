@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:local_marketplace/drawer/drawer.dart';
 import 'package:local_marketplace/screens/bottom_bar.dart';
+import 'package:local_marketplace/screens/product_view_page.dart';
 
 class MainPage extends StatelessWidget {
   @override
@@ -8,6 +9,8 @@ class MainPage extends StatelessWidget {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
+          backgroundColor: Color(0xffe7e8eb),
+          extendBodyBehindAppBar: false,
           appBar: AppBar(
             backgroundColor: Colors.green,
             title: Align(
@@ -40,7 +43,12 @@ class MainPage extends StatelessWidget {
           ),
           endDrawer: Drawer(child: DrawerPage()),
           bottomNavigationBar: BottomBarPage(),
-          body: Column(),
+          body: TabBarView(
+            children: [
+              ProductViewPage(),
+              const Icon(Icons.directions_transit),
+            ],
+          ),
         ));
   }
 }
