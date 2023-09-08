@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class SellerRegistrationPage extends StatelessWidget {
@@ -102,93 +100,54 @@ class SellerRegistrationPage extends StatelessWidget {
             Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 350,
-                        child: TextField(
-                          obscureText: false,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Region"),
-                        ),
-                      )
-                    ],
+                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                  child: Container(
+                    width: 50,
+                    height: 45,
+                    decoration: BoxDecoration(
+                        color: Colors.orangeAccent.withOpacity(.10),
+                        border: Border.all(color: Colors.black, width: 2)),
+                    child: Row(children: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.add,
+                            color: Colors.black,
+                            size: 30,
+                          ))
+                    ]),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 19),
-            Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 350,
-                        child: TextField(
-                          obscureText: false,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Province"),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+                )
               ],
             ),
             SizedBox(
-              height: 10,
+              height: 30,
             ),
             Column(
               children: [
                 Padding(
                   padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        width: 350,
-                        child: TextField(
-                          obscureText: false,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(), labelText: "City"),
-                        ),
+                      Text(
+                        "Settings",
+                        style: TextStyle(color: Colors.grey, fontSize: 15),
                       )
                     ],
                   ),
-                ),
+                )
               ],
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
             Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 350,
-                        child: TextField(
-                          obscureText: false,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Barrangay"),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+                Row(
+                  children: [],
+                )
               ],
-            ),
+            )
           ],
         )));
   }
