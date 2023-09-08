@@ -1,145 +1,99 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:local_marketplace/screens/widget/my_button.dart';
+import 'package:local_marketplace/screens/widget/my_text_input.dart';
 
 class RegistrationPage extends StatelessWidget {
+  final Widget svg = SvgPicture.asset("assets/svgs/signup.svg",
+      height: 100,
+      alignment: Alignment.topRight,
+      colorFilter: ColorFilter.mode(Colors.red, BlendMode.srcIn),
+      semanticsLabel: 'Sign Up');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.center,
+        body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                textAlign: TextAlign.center,
-                'Sign up',
-                style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green),
+              Container(
+                padding: EdgeInsets.all(5),
+                child: svg,
               ),
-            ],
-          ),
-          SizedBox(height: 20),
-          Column(
-            children: [
               Text(
-                'Username',
-                style: TextStyle(fontSize: 15),
+                "Get On Board !",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-              Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(), hintText: 'Username'),
-                  )),
               Text(
-                'First Name ',
-                style: TextStyle(fontSize: 15),
+                "Create your profile to start your journey",
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w200),
               ),
-              Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(), hintText: 'First Name'),
-                  )),
-              Text(
-                'Last Name',
-                style: TextStyle(fontSize: 15),
+              SizedBox(
+                height: 20,
               ),
-              Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(), hintText: 'Last Name'),
-                  )),
-              Text(
-                textAlign: TextAlign.left,
-                'Email',
-                style: TextStyle(fontSize: 15),
-              ),
-              Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(), hintText: 'Email'),
-                  )),
-              Text(
-                'Password',
-                style: TextStyle(fontSize: 15),
-              ),
-              Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(), hintText: 'Password'),
-                  )),
-              Text(
-                'Phone Number',
-                style: TextStyle(fontSize: 15),
-              ),
-              Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter Phone Number '),
-                  )),
-              Text('Profile Picture',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300)),
-              TextButton(
-                  style: TextButton.styleFrom(
-                    fixedSize: const Size(340, 40),
-                    backgroundColor: Colors.blue,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width - 50,
+                    child: MyTextInput(
+                      prefixIcon: Icons.email,
+                      label: "Email",
                     ),
                   ),
-                  onPressed: null,
-                  child: Text(
-                    'Upload Picture',
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                    textAlign: TextAlign.center,
-                  ))
-            ],
-          ),
-          SizedBox(height: 10),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              const Align(
-                alignment: Alignment.bottomRight,
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: TextButton(
-                    style: TextButton.styleFrom(
-                      fixedSize: const Size(120, 40),
-                      backgroundColor: Colors.green,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                      ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width - 50,
+                    child: MyTextInput(
+                      prefixIcon: Icons.account_box,
+                      label: "Full Name",
                     ),
-                    onPressed: null,
-                    child: const Text('Next',
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white))),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width - 50,
+                    child: MyTextInput(
+                      prefixIcon: Icons.password,
+                      label: "Password",
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MyButton(
+                    onPressed: () {},
+                    label: "Sign Up",
+                  )
+                ],
               )
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     ));
   }
 }
