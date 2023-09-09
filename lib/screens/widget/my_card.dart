@@ -47,7 +47,10 @@ class myCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(text),
+                    Text(
+                      text,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                     Text(location),
                     SizedBox(
                       height: 5,
