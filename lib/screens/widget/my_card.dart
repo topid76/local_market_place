@@ -50,8 +50,9 @@ class myCard extends StatelessWidget {
                     Text(
                       text,
                       overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
                     ),
-                    Text(location),
+                    Text(location, overflow: TextOverflow.ellipsis),
                     SizedBox(
                       height: 5,
                     ),

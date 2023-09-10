@@ -8,7 +8,7 @@ class ProductViewPage extends StatelessWidget {
     return Container(
       child: GridView.count(
         scrollDirection: Axis.vertical,
-        childAspectRatio: 2 / 3,
+        childAspectRatio: 3 / 5,
         crossAxisCount: 2,
         padding: EdgeInsets.all(10),
         crossAxisSpacing: 20,
