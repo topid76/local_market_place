@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyIconButton extends StatelessWidget {
-  late VoidCallback onPressed;
+  var onPressed;
   final icon;
   MyIconButton({required this.onPressed, required this.icon});
   @override

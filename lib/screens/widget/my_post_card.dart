@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:local_marketplace/screens/widget/my_icon_button.dart';
 
 class MyPostCard extends StatelessWidget {
   final String profilePicture;
@@ -81,8 +82,8 @@ class MyPostCard extends StatelessWidget {
               child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              IconButton(onPressed: favorite_button, icon: favorite_icon),
-              IconButton(onPressed: share_button, icon: share_icon)
+              MyIconButton(onPressed: favorite_button, icon: favorite_icon),
+              MyIconButton(onPressed: share_button, icon: share_icon)
             ],
           ))
         ],
