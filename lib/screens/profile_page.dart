@@ -1,74 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:local_marketplace/screens/bottom_bar.dart';
+import 'package:local_marketplace/screens/widget/my_profile.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.greenAccent,
+      appBar: AppBar(
+        actions: [
+          Icon(
+            Icons.settings,
+            size: 40,
+          )
+        ],
+      ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              IconButton(
-                icon: Icon(
-                  Icons.settings,
-                  size: 30,
-                ),
-                onPressed: () {},
-              )
-            ],
-          ),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(15),
-                    child: CircleAvatar(
-                      radius: 50,
-                      backgroundImage: AssetImage(
-                        "assets/images/profile.jpg",
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(15),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(10, 5, 0, 3),
-                          child: Text("Opol Tourism",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.normal, fontSize: 25)),
-                        ),
-                        Padding(
-                            padding: EdgeInsets.fromLTRB(5, 2, 0, 2),
-                            child: Text(
-                              "Opol Misamis Oriental",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.normal, fontSize: 15),
-                            )),
-                        Padding(
-                            padding: EdgeInsets.fromLTRB(5, 2, 0, 2),
-                            child: Text(
-                              "09## ### ####",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.normal, fontSize: 15),
-                            )),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
+          MyProfile(
+            profile:
+                "https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-mediumSquareAt3X-v2.jpg",
+            fullName: "Jay Kim Lusing",
+            address: "Opol Misamis Oriental",
+            contactNumber: "0966 296 4893",
           ),
           Column(
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
+                padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
