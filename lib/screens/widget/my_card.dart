@@ -50,15 +50,25 @@ class myCard extends StatelessWidget {
                     Text(
                       text,
                       overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
+                      maxLines: 1,
+                      style: TextStyle(fontSize: 20),
                     ),
-                    Text(location, overflow: TextOverflow.ellipsis),
+                    Text(
+                      location,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 15),
+                    ),
                     SizedBox(
                       height: 5,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: [Text('\$$price')],
+                      children: [
+                        Text(
+                          '\₱ $price',
+                          style: TextStyle(fontSize: 18),
+                        )
+                      ],
                     )
                   ],
                 ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:local_marketplace/screens/widget/my_button.dart';
+import 'package:local_marketplace/screens/widget/my_text_input.dart';
 
 class SellerRegistrationPage extends StatelessWidget {
   @override
@@ -16,137 +18,71 @@ class SellerRegistrationPage extends StatelessWidget {
           title: Text("Seller Registration"),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              padding: EdgeInsets.fromLTRB(10, 30, 10, 0),
+              child: MyTextInput(
+                label: "Shop Name",
+                prefixIcon: Icons.store,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 50, 10, 0),
+              child: MyTextInput(
+                label: "Pick Up Address",
+                prefixIcon: Icons.location_on_outlined,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+              child: MyTextInput(
+                label: "Email Address",
+                prefixIcon: Icons.email_rounded,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+              child: MyTextInput(
+                label: "Phone Number",
+                prefixIcon: Icons.contact_page_outlined,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(15, 30, 15, 0),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(
-                    "Contact Information",
-                    style: TextStyle(color: Colors.grey, fontSize: 15),
+                  SizedBox(
+                    height: 50,
+                    width: 150,
+                    child: MyButton(
+                      onPressed: () {},
+                      label: "Cancel",
+                      backgroundColor: Colors.white60,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 150,
+                    height: 50,
+                    child: MyButton(
+                      onPressed: () {},
+                      label: "Submit",
+                      backgroundColor: Colors.blueAccent,
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
                   )
                 ],
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 350,
-                        child: TextField(
-                          obscureText: false,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Full Name"),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 10),
-            Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 350,
-                        child: TextField(
-                          obscureText: false,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Phone Number"),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Address",
-                        style: TextStyle(color: Colors.grey, fontSize: 15),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                  child: Container(
-                    width: 50,
-                    height: 45,
-                    decoration: BoxDecoration(
-                        color: Colors.orangeAccent.withOpacity(.10),
-                        border: Border.all(color: Colors.black, width: 2)),
-                    child: Row(children: [
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.add,
-                            color: Colors.black,
-                            size: 30,
-                          ))
-                    ]),
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Settings",
-                        style: TextStyle(color: Colors.grey, fontSize: 15),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Column(
-              children: [
-                Row(
-                  children: [],
-                )
-              ],
             )
           ],
         )));

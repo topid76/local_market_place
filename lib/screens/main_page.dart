@@ -35,13 +35,6 @@ class MainPage extends StatelessWidget {
               ],
             ),
           ),
-          floatingActionButton: Container(
-            decoration: const BoxDecoration(shape: BoxShape.circle),
-            child: FloatingActionButton(
-              onPressed: () {},
-              child: Icon(Icons.add),
-            ),
-          ),
           endDrawer: Drawer(child: DrawerPage()),
           bottomNavigationBar: BottomBarPage(),
           body: TabBarView(

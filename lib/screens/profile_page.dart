@@ -30,7 +30,7 @@ class ProfilePage extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
-                      color: Color.fromARGB(255, 241, 164, 47)),
+                      color: Color.fromARGB(153, 237, 237, 237)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -61,7 +61,7 @@ class ProfilePage extends StatelessWidget {
                       border: Border.all(
                         color: Colors.grey,
                       ),
-                      color: Color.fromARGB(255, 241, 164, 47)),
+                      color: Color.fromARGB(153, 237, 237, 237)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -126,7 +126,7 @@ class ProfilePage extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(),
-                      color: Color.fromARGB(255, 241, 164, 47)),
+                      color: Color.fromARGB(153, 237, 237, 237)),
                   child: Row(
                     children: [
                       IconButton(
@@ -158,7 +158,7 @@ class ProfilePage extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(),
-                      color: Color.fromARGB(255, 241, 164, 47)),
+                      color: Color.fromARGB(153, 237, 237, 237)),
                   child: Row(
                     children: [
                       IconButton(
@@ -189,7 +189,7 @@ class ProfilePage extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(),
-                      color: Color.fromARGB(255, 241, 164, 47)),
+                      color: Color.fromARGB(153, 237, 237, 237)),
                   child: Row(
                     children: [
                       IconButton(

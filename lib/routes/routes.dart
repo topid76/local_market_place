@@ -5,7 +5,7 @@ import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/screens/home_page.dart';
 import 'package:local_marketplace/screens/registration_page.dart';
 import 'package:local_marketplace/screens/login_page.dart';
-import 'package:local_marketplace/screens/registration_page_2.dart';
+
 import 'package:local_marketplace/screens/main_page.dart';
 import 'package:local_marketplace/screens/profile_page.dart';
 import 'package:local_marketplace/screens/product_registration.dart';
@@ -19,8 +19,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => HomePage());
     case RegistrationRoute:
       return MaterialPageRoute(builder: (_) => RegistrationPage());
-    case RegistrationRoute2:
-      return MaterialPageRoute(builder: (_) => RegistrationPage2());
+
     case LoginRoute:
       return MaterialPageRoute(builder: (_) => LoginPage());
     case MainRoute:

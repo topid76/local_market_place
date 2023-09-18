@@ -7,7 +7,7 @@ import 'package:local_marketplace/screens/widget/my_text_input.dart';
 
 class RegistrationPage extends StatelessWidget {
   final Widget svg = SvgPicture.asset("assets/svgs/signup.svg",
-      height: 100,
+      height: 150,
       alignment: Alignment.topRight,
       colorFilter: ColorFilter.mode(Colors.red, BlendMode.srcIn),
       semanticsLabel: 'Sign Up');
@@ -86,7 +86,9 @@ class RegistrationPage extends StatelessWidget {
                 children: [
                   MyButton(
                     onPressed: () {},
+                    backgroundColor: Colors.green[600],
                     label: "Sign Up",
+                    style: TextStyle(color: Colors.black),
                   )
                 ],
               )

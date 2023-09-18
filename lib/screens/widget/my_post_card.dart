@@ -70,11 +70,14 @@ class MyPostCard extends StatelessWidget {
           Expanded(
               child: Column(
             children: [
-              Text(
-                posted_text,
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 23),
+              Padding(
+                padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                child: Text(
+                  posted_text,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: 23),
+                ),
               ),
             ],
           )),

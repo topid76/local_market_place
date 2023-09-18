@@ -5,8 +5,14 @@ import 'package:flutter/material.dart';
 class MyButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String label;
+  final backgroundColor;
+  final TextStyle style;
 
-  MyButton({required this.onPressed, required this.label});
+  MyButton(
+      {required this.onPressed,
+      required this.label,
+      this.backgroundColor,
+      required this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +20,10 @@ class MyButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         label,
-        style: TextStyle(color: Colors.white),
+        style: style,
       ),
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.black87,
+        backgroundColor: backgroundColor,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(2)),
         ),

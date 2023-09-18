@@ -15,6 +15,7 @@ class MyProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
+      decoration: BoxDecoration(color: Color.fromARGB(153, 237, 237, 237)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,

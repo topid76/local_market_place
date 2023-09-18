@@ -8,7 +8,7 @@ class MyTextInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      
+      maxLines: null,
       decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5.0),
@@ -21,7 +21,6 @@ class MyTextInput extends StatelessWidget {
           labelStyle: TextStyle(color: Colors.deepOrange),
           label: Text(label),
           prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null),
-          
     );
   }
 }
