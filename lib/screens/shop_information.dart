@@ -20,7 +20,7 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
   String? dropDownValue;
   @override
   void initState() {
-    getIt<AppNotifier>().getRegions();
+    getIt<AppNotifier>().getProvince();
     super.initState();
   }
 
@@ -93,7 +93,7 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                                   value: dropDownValue,
                                   isExpanded: true,
                                   underline: Container(),
-                                  items: appNotifier.regions
+                                  items: appNotifier.province
                                       .map((data) => DropdownMenuItem(
                                             child: Text(data.name),
                                             value: data.code,

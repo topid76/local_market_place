@@ -12,16 +12,16 @@ class AppNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<Location> _regions = [];
-  List<Location> get regions => _regions;
+  List<Location> _province = [];
+  List<Location> get province => _province;
 
-  set regions(List<Location> regions) {
-    _regions = regions;
+  set province(List<Location> province) {
+    _province = province;
     notifyListeners();
   }
 
-  Future getRegions() async {
-    final result = await _locationService.getAllRegions();
-    regions = result;
+  Future getProvince() async {
+    final result = await _locationService.getAllProvince();
+    province = result;
   }
 }

@@ -11,21 +11,22 @@ import 'package:dio/dio.dart';
 class LocationService {
   final NetworkService _networkService = getIt<NetworkService>();
 
-  Future<List<Location>> getAllRegions() async {
+  Future<List<Location>> getAllProvince() async {
     try {
-      final response = await _networkService.getRequest(REGION_URL,
+      final response = await _networkService.getRequest(PROVINCES_URL,
           baseUrl: LOCATION_API_BASE_URL);
       print(response.runtimeType);
       List<dynamic> data = jsonDecode(response);
       print(data);
-      List<Location> regions =
+      List<Location> province =
           data.map((json) => Location.fromJson(json)).toList();
-      return regions;
+      return province;
     } on DioException catch (e) {
       print(e.toString());
       return [];
     }
   }
+  
 }
 
 

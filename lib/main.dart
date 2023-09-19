@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       providers: [...appStateProviders],
       child: MaterialApp(
         onGenerateRoute: generateRoute,
-        initialRoute: ProfileEditRoute,
+        initialRoute: ShopInformationRoute,
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
