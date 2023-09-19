@@ -103,6 +103,7 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                                     setState(() {
                                       dropDownValue = value;
                                     });
+                                   
                                     //call another api
                                   });
                             },
