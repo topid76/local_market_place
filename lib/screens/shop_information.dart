@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:local_marketplace/screens/shop_registration_page.dart';
+import 'package:local_marketplace/screens/widget/my_button.dart';
 import 'package:local_marketplace/screens/widget/my_checkbox.dart';
+import 'package:local_marketplace/screens/widget/my_inlinebutton.dart';
 import 'package:local_marketplace/screens/widget/my_radio.dart';
 import 'package:local_marketplace/screens/widget/my_text_input.dart';
 
@@ -120,14 +122,32 @@ class ShopInformationPage extends StatelessWidget {
                     onChanged: (bool) {},
                     value: false,
                   ),
-                  Text.rich(
-                      TextSpan(text: "I agree to these", children: <InlineSpan>[
-                    TextSpan(
-                      text: "Terms and Conditions",
-                    )
-                  ]))
+                  Text("I agree to these "),
+                  MyInlineButton(text: "Terms and Condition", function: () {})
                 ],
-              )
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(
+                      width: 350,
+                      height: 50,
+                      child: MyButton(
+                        onPressed: () {},
+                        label: "Next",
+                        backgroundColor: Colors.blueAccent,
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
