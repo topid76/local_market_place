@@ -2,10 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:local_marketplace/routes/constants.dart';
-import 'package:local_marketplace/screens/home_page.dart';
 import 'package:local_marketplace/screens/registration_page.dart';
 import 'package:local_marketplace/screens/login_page.dart';
-
 import 'package:local_marketplace/screens/main_page.dart';
 import 'package:local_marketplace/screens/profile_page.dart';
 import 'package:local_marketplace/screens/product_registration.dart';
@@ -15,8 +13,6 @@ import 'package:local_marketplace/screens/product_view_page.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case HomeRoute:
-      return MaterialPageRoute(builder: (_) => HomePage());
     case RegistrationRoute:
       return MaterialPageRoute(builder: (_) => RegistrationPage());
 

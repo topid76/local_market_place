@@ -29,8 +29,9 @@ class ProfilePage extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
                 child: Container(
                   decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Color.fromARGB(153, 237, 237, 237)),
+                      border: Border.all(
+                          color: const Color.fromARGB(255, 158, 158, 158)),
+                      color: Color.fromARGB(153, 196, 239, 222)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -61,7 +62,7 @@ class ProfilePage extends StatelessWidget {
                       border: Border.all(
                         color: Colors.grey,
                       ),
-                      color: Color.fromARGB(153, 237, 237, 237)),
+                      color: Color.fromARGB(153, 196, 239, 222)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -126,7 +127,7 @@ class ProfilePage extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(),
-                      color: Color.fromARGB(153, 237, 237, 237)),
+                      color: Color.fromARGB(153, 196, 239, 222)),
                   child: Row(
                     children: [
                       IconButton(
@@ -158,7 +159,7 @@ class ProfilePage extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(),
-                      color: Color.fromARGB(153, 237, 237, 237)),
+                      color: Color.fromARGB(153, 196, 239, 222)),
                   child: Row(
                     children: [
                       IconButton(
@@ -189,7 +190,7 @@ class ProfilePage extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(),
-                      color: Color.fromARGB(153, 237, 237, 237)),
+                      color: Color.fromARGB(153, 196, 239, 222)),
                   child: Row(
                     children: [
                       IconButton(
