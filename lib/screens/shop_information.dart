@@ -18,6 +18,7 @@ class ShopInformationPage extends StatefulWidget {
 
 class _ShopInformationPageState extends State<ShopInformationPage> {
   String? dropDownValue;
+  String? dropDownValue2;
   @override
   void initState() {
     getIt<AppNotifier>().getProvince();
@@ -102,6 +103,39 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                                   onChanged: (String? value) {
                                     setState(() {
                                       dropDownValue = value;
+                                    });
+                                    // call another api
+                                    appNotifier.getMunCityByProvince(value!);
+                                  });
+                            },
+                          ))
+                        ]),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey.shade300)),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(child: Consumer<AppNotifier>(
+                            builder: (_, appNotifier, __) {
+                              return DropdownButton<String>(
+                                  value: dropDownValue2,
+                                  isExpanded: true,
+                                  underline: Container(),
+                                  items: appNotifier.municipalities
+                                      .map((data) => DropdownMenuItem(
+                                            child: Text(data.name),
+                                            value: data.code,
+                                          ))
+                                      .toList(),
+                                  onChanged: (String? value) {
+                                    setState(() {
+                                      dropDownValue2 = value;
                                     });
                                     //call another api
                                   });
