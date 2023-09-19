@@ -1,12 +1,29 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:local_marketplace/common/dependency_locator.dart';
+import 'package:local_marketplace/notifiers/app_notifier.dart';
 import 'package:local_marketplace/screens/shop_registration_page.dart';
 import 'package:local_marketplace/screens/widget/my_button.dart';
 import 'package:local_marketplace/screens/widget/my_checkbox.dart';
 import 'package:local_marketplace/screens/widget/my_inlinebutton.dart';
 import 'package:local_marketplace/screens/widget/my_radio.dart';
 import 'package:local_marketplace/screens/widget/my_text_input.dart';
+import 'package:provider/provider.dart';
 
-class ShopInformationPage extends StatelessWidget {
+class ShopInformationPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _ShopInformationPageState();
+}
+
+class _ShopInformationPageState extends State<ShopInformationPage> {
+  String? dropDownValue;
+  @override
+  void initState() {
+    getIt<AppNotifier>().getRegions();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,25 +81,32 @@ class ShopInformationPage extends StatelessWidget {
               Column(
                 children: [
                   Container(
+                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey.shade300)),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                "Registered Address",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 18),
-                              )),
-                          IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.arrow_right,
-                                size: 30,
-                                color: Colors.black,
-                              ))
+                          Expanded(child: Consumer<AppNotifier>(
+                            builder: (_, appNotifier, __) {
+                              return DropdownButton<String>(
+                                  value: dropDownValue,
+                                  isExpanded: true,
+                                  underline: Container(),
+                                  items: appNotifier.regions
+                                      .map((data) => DropdownMenuItem(
+                                            child: Text(data.name),
+                                            value: data.code,
+                                          ))
+                                      .toList(),
+                                  onChanged: (String? value) {
+                                    setState(() {
+                                      dropDownValue = value;
+                                    });
+                                    //call another api
+                                  });
+                            },
+                          ))
                         ]),
                   )
                 ],
