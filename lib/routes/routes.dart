@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:local_marketplace/routes/constants.dart';
+import 'package:local_marketplace/screens/profile_edit_page.dart';
 import 'package:local_marketplace/screens/registration_page.dart';
 import 'package:local_marketplace/screens/login_page.dart';
 import 'package:local_marketplace/screens/main_page.dart';
@@ -25,11 +26,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => ProductRegistratioPage());
     case SettingsRoute:
       return MaterialPageRoute(builder: (_) => SettingsPage());
-    case SellerRegistrationRoute:
+    case ShopRegistrationRoute:
       return MaterialPageRoute(builder: (_) => SellerRegistrationPage());
     case ShopInformationRoute:
       return MaterialPageRoute(builder: (_) => ShopInformationPage());
-
+    case ProfileEditRoute:
+      return MaterialPageRoute(builder: (_) => ProfileEditPage());
     default:
       return MaterialPageRoute(
           builder: (_) => const Scaffold(

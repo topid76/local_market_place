@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_marketplace/drawer/drawer.dart';
-import 'package:local_marketplace/screens/bottom_bar.dart';
+import 'package:local_marketplace/bottombar/bottom_bar.dart';
 import 'package:local_marketplace/screens/post_page.dart';
 import 'package:local_marketplace/screens/product_view_page.dart';
 

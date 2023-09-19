@@ -5,6 +5,10 @@ const MainRoute = "main";
 const ProfileRoute = "/profile";
 const ProductRegistrationRoute = "/product-registration";
 const SettingsRoute = "/settings";
-const SellerRegistrationRoute = "/seller-registration";
+//Shop
+const ShopRegistrationRoute = "/seller-registration";
 const ShopInformationRoute = "/shop-information";
+//edit profile
+const ProfileEditRoute = "/profile-edit";
+//Product
 const ViewRoute = "/view";

@@ -11,7 +11,7 @@ class MySwitch extends StatelessWidget {
       onChanged: (bool? newValue) {
         onChanged(newValue!);
       },
-      activeColor: Colors.red[400],
+      activeColor: Color.fromARGB(255, 43, 78, 251),
     );
   }
 }

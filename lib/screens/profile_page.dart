@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:local_marketplace/screens/bottom_bar.dart';
+import 'package:local_marketplace/bottombar/bottom_bar.dart';
 import 'package:local_marketplace/screens/widget/my_profile.dart';
 
 class ProfilePage extends StatelessWidget {

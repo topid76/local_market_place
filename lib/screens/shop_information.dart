@@ -133,7 +133,7 @@ class ShopInformationPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
-                      width: 350,
+                      width: 300,
                       height: 50,
                       child: MyButton(
                         onPressed: () {},
