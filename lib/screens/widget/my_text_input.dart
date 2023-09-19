@@ -4,7 +4,10 @@ class MyTextInput extends StatelessWidget {
   final IconData? prefixIcon;
   final String label;
 
-  MyTextInput({this.prefixIcon, this.label = ""});
+  MyTextInput({
+    this.prefixIcon,
+    this.label = "",
+  });
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -19,7 +22,9 @@ class MyTextInput extends StatelessWidget {
             borderSide: BorderSide(color: Colors.deepOrange),
           ),
           labelStyle: TextStyle(color: Colors.deepOrange),
-          label: Text(label),
+          label: Text(
+            label,
+          ),
           prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null),
     );
   }
