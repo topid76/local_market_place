@@ -33,9 +33,19 @@ class AppNotifier extends ChangeNotifier {
     province = result;
   }
 
-  Future getMunicipalitiesByProvince(String code) async {
-    print("calleddfunction");
+  Future<List<Location>> getMunicipalitiesByProvince(String code) async {
     final result = await _locationService.getAllMunicipalitiesByProvince(code);
-    municipalities = result;
+    return result;
+  }
+
+  Future<List<Location>> getCityByProvince(String code) async {
+    final result = await _locationService
+        .getAllMunicipalitiesByProvince(code); //change this toocitiies
+    return result;
+  }
+
+  Future getMunCityByProvince(String code) async {
+    //fethc1
+    //fetch2
   }
 }
