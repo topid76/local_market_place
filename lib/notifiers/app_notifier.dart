@@ -20,8 +20,22 @@ class AppNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<Location> _municipalities = [];
+  List<Location> get municipalities => _municipalities;
+
+  set municipalities(List<Location> municipalities) {
+    _municipalities = municipalities;
+    notifyListeners();
+  }
+
   Future getProvince() async {
     final result = await _locationService.getAllProvince();
     province = result;
+  }
+
+  Future getMunicipalitiesByProvince(String code) async {
+    print("calleddfunction");
+    final result = await _locationService.getAllMunicipalitiesByProvince(code);
+    municipalities = result;
   }
 }
