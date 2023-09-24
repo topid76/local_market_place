@@ -17,8 +17,9 @@ class ShopInformationPage extends StatefulWidget {
 }
 
 class _ShopInformationPageState extends State<ShopInformationPage> {
-  String? dropDownValue;
-  String? dropDownValue2;
+  String? dropDownProvinceValue;
+  String? dropDownMunicipalitiesValue;
+  String? dropDownCitesValue;
   @override
   void initState() {
     getIt<AppNotifier>().getProvince();
@@ -80,7 +81,10 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                 height: 30,
               ),
               Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text("Province"),
                   Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                     decoration: BoxDecoration(
@@ -91,7 +95,7 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                           Expanded(child: Consumer<AppNotifier>(
                             builder: (_, appNotifier, __) {
                               return DropdownButton<String>(
-                                  value: dropDownValue,
+                                  value: dropDownProvinceValue,
                                   isExpanded: true,
                                   underline: Container(),
                                   items: appNotifier.province
@@ -102,10 +106,11 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                                       .toList(),
                                   onChanged: (String? value) {
                                     setState(() {
-                                      dropDownValue = value;
+                                      dropDownProvinceValue = value;
                                     });
                                     // call another api
                                     appNotifier.getMunCityByProvince(value!);
+                                    print(appNotifier);
                                   });
                             },
                           ))
@@ -114,34 +119,43 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                   SizedBox(
                     height: 20,
                   ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey.shade300)),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(child: Consumer<AppNotifier>(
-                            builder: (_, appNotifier, __) {
-                              return DropdownButton<String>(
-                                  value: dropDownValue2,
-                                  isExpanded: true,
-                                  underline: Container(),
-                                  items: appNotifier.municipalities
-                                      .map((data) => DropdownMenuItem(
-                                            child: Text(data.name),
-                                            value: data.code,
-                                          ))
-                                      .toList(),
-                                  onChanged: (String? value) {
-                                    setState(() {
-                                      dropDownValue2 = value;
-                                    });
-                                    //call another api
-                                  });
-                            },
-                          ))
-                        ]),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Cities"),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey.shade300)),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(child: Consumer<AppNotifier>(
+                                builder: (_, appNotifier, __) {
+                                  return DropdownButton<String>(
+                                      value: dropDownCitesValue,
+                                      isExpanded: true,
+                                      underline: Container(),
+                                      items: appNotifier.munCity
+                                          .map((data) => DropdownMenuItem(
+                                                child: Text(data.name),
+                                                value: data.code,
+                                              ))
+                                          .toList(),
+                                      onChanged: (
+                                        String? value,
+                                      ) {
+                                        setState(() {
+                                          dropDownCitesValue = value;
+                                        });
+                                        //call another api
+                                      });
+                                },
+                              ))
+                            ]),
+                      ),
+                    ],
                   )
                 ],
               ),
@@ -180,7 +194,12 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                     onChanged: (bool) {},
                     value: false,
                   ),
-                  Text("I agree to these "),
+                  Expanded(
+                      child: Text(
+                    "I agree to these ",
+                    maxLines: 1,
+                    style: TextStyle(fontSize: 10),
+                  )),
                   MyInlineButton(text: "Terms and Condition", function: () {})
                 ],
               ),

@@ -11,7 +11,7 @@ class MyInlineButton extends StatelessWidget {
       onPressed: function(),
       child: Text(
         text,
-        style: TextStyle(color: Colors.blueAccent),
+        style: TextStyle(color: Colors.blueAccent, fontSize: 13),
       ),
     );
   }

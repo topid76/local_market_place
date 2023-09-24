@@ -40,6 +40,24 @@ class LocationService {
       return [];
     }
   }
+
+  Future<List<Location>> getAllCityByProvince(String code) async {
+    final String url = '$PROVINCES_URL/$code$CITY_URL';
+    print(url);
+    try {
+      final response =
+          await _networkService.getRequest(url, baseUrl: LOCATION_API_BASE_URL);
+      List<dynamic> data = jsonDecode(response);
+      List<Location> city =
+          data.map((json) => Location.fromJson(json)).toList();
+      return city;
+    } on DioException catch (e) {
+      print(e.toString());
+      return [];
+    }
+  }
+
+  
 }
 
 

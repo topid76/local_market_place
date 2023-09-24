@@ -12,6 +12,8 @@ class AppNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+//province seters and get array
+
   List<Location> _province = [];
   List<Location> get province => _province;
 
@@ -19,6 +21,13 @@ class AppNotifier extends ChangeNotifier {
     _province = province;
     notifyListeners();
   }
+
+  Future getProvince() async {
+    final result = await _locationService.getAllProvince();
+    province = result;
+  }
+
+//municipalities setters and array
 
   List<Location> _municipalities = [];
   List<Location> get municipalities => _municipalities;
@@ -28,24 +37,42 @@ class AppNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future getProvince() async {
-    final result = await _locationService.getAllProvince();
-    province = result;
-  }
-
   Future<List<Location>> getMunicipalitiesByProvince(String code) async {
     final result = await _locationService.getAllMunicipalitiesByProvince(code);
     return result;
   }
 
+// City set and get arrays
+  List<Location> _cities = [];
+  List<Location> get cities => _cities;
+
+  set cities(List<Location> cities) {
+    _cities = cities;
+    notifyListeners();
+  }
+
   Future<List<Location>> getCityByProvince(String code) async {
     final result = await _locationService
-        .getAllMunicipalitiesByProvince(code); //change this toocitiies
+        .getAllCityByProvince(code); //change this toocitiies
     return result;
   }
 
+  //municipalities and cities set get in combine
+
+  List<Location> _munCity = [];
+  List<Location> get munCity => _munCity;
+
+  set munCity(List<Location> munCity) {
+    _munCity = munCity;
+    notifyListeners();
+  }
+
   Future getMunCityByProvince(String code) async {
-    //fethc1
-    //fetch2
+    final municipalities =
+        await _locationService.getAllMunicipalitiesByProvince(code);
+    final cities = await _locationService.getAllCityByProvince(code);
+    //Combine 2 arrays
+    final combineMunCity = [...municipalities, ...cities];
+    munCity = combineMunCity;
   }
 }
