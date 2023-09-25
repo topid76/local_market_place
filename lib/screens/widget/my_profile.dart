@@ -44,11 +44,11 @@ class MyProfile extends StatelessWidget {
             children: [
               Text(
                 address,
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 12, overflow: TextOverflow.ellipsis),
               ),
               Text(
                 contactNumber,
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 12),
               )
             ],
           )

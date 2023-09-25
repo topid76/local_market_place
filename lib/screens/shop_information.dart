@@ -22,8 +22,7 @@ class ShopInformationPage extends StatefulWidget {
 
 class _ShopInformationPageState extends State<ShopInformationPage> {
   String? dropDownProvinceValue;
-  String? dropDownMunicipalitiesValue;
-  String? dropDownCitesValue;
+  String? dropDownMunCityValue;
   String? dropDownBarangayValue;
   bool checkBox = false;
 
@@ -153,7 +152,7 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                               Expanded(child: Consumer<AppNotifier>(
                                 builder: (_, appNotifier, __) {
                                   return DropdownButton<String>(
-                                      value: dropDownCitesValue,
+                                      value: dropDownMunCityValue,
                                       isExpanded: true,
                                       underline: Container(),
                                       items: appNotifier.munCity
@@ -166,7 +165,7 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                                         String? value,
                                       ) {
                                         setState(() {
-                                          dropDownCitesValue = value;
+                                          dropDownMunCityValue = value;
                                         });
                                         //call another api
                                         appNotifier

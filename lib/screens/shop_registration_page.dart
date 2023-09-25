@@ -1,11 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:local_marketplace/common/dependency_locator.dart';
+import 'package:local_marketplace/notifiers/app_notifier.dart';
 import 'package:local_marketplace/screens/widget/my_button.dart';
 import 'package:local_marketplace/screens/widget/my_radio.dart';
 import 'package:local_marketplace/screens/widget/my_switch.dart';
 import 'package:local_marketplace/screens/widget/my_text_input.dart';
+import 'package:provider/provider.dart';
 
-class SellerRegistrationPage extends StatelessWidget {
+class SellerRegistrationPage extends StatefulWidget {
   @override
+  State<StatefulWidget> createState() => _SellerRegistrationState();
+}
+
+class _SellerRegistrationState extends State<SellerRegistrationPage> {
+  bool defaultAddress = false;
+  bool pickUpAddress = false;
+  String selectedButton = "";
+
+  String? dropDownProvinceValue;
+  String? dropDownMunCityValue;
+  String? dropDownBarangayValue;
+
+  void _handleButtonPress(String buttonName) {
+    setState(() {
+      selectedButton = buttonName;
+    });
+  }
+
+  @override
+  void initState() {
+    getIt<AppNotifier>().getProvince();
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return (Scaffold(
         appBar: AppBar(
@@ -25,17 +52,10 @@ class SellerRegistrationPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(10, 80, 10, 0),
+                padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
                 child: MyTextInput(
                   label: "Shop Name",
                   prefixIcon: Icons.store,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(10, 50, 10, 0),
-                child: MyTextInput(
-                  label: "Pick Up Address",
-                  prefixIcon: Icons.location_on_outlined,
                 ),
               ),
               Padding(
@@ -50,6 +70,144 @@ class SellerRegistrationPage extends StatelessWidget {
                 child: MyTextInput(
                   label: "Phone Number",
                   prefixIcon: Icons.contact_page_outlined,
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Padding(
+                  padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                  child: Text(
+                    "Address",
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Color.fromARGB(255, 123, 118, 118)),
+                  )),
+              Padding(
+                padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Province"),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey.shade300)),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(child: Consumer<AppNotifier>(
+                              builder: (_, appNotifier, __) {
+                                return DropdownButton<String>(
+                                    value: dropDownProvinceValue,
+                                    isExpanded: true,
+                                    underline: Container(),
+                                    items: appNotifier.province
+                                        .map((data) => DropdownMenuItem(
+                                              child: Text(data.name),
+                                              value: data.code,
+                                            ))
+                                        .toList(),
+                                    onChanged: (String? value) {
+                                      setState(() {
+                                        dropDownProvinceValue = value;
+                                      });
+                                      // call another api
+                                      appNotifier.getMunCityByProvince(value!);
+                                      print(appNotifier);
+                                    });
+                              },
+                            ))
+                          ]),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("City/Municipality"),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey.shade300)),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(child: Consumer<AppNotifier>(
+                                  builder: (_, appNotifier, __) {
+                                    return DropdownButton<String>(
+                                        value: dropDownMunCityValue,
+                                        isExpanded: true,
+                                        underline: Container(),
+                                        items: appNotifier.munCity
+                                            .map((data) => DropdownMenuItem(
+                                                  child: Text(data.name),
+                                                  value: data.code,
+                                                ))
+                                            .toList(),
+                                        onChanged: (
+                                          String? value,
+                                        ) {
+                                          setState(() {
+                                            dropDownMunCityValue = value;
+                                          });
+                                          //call another api
+                                          appNotifier
+                                              .getBarangayByCityOrMunicipality(
+                                                  value!);
+                                          print(appNotifier);
+                                        });
+                                  },
+                                ))
+                              ]),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Province"),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey.shade300)),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(child: Consumer<AppNotifier>(
+                                  builder: (_, appNotifier, __) {
+                                    return DropdownButton<String>(
+                                        value: dropDownBarangayValue,
+                                        isExpanded: true,
+                                        underline: Container(),
+                                        items: appNotifier.barangay
+                                            .map((data) => DropdownMenuItem(
+                                                  child: Text(data.name),
+                                                  value: data.code,
+                                                ))
+                                            .toList(),
+                                        onChanged: (
+                                          String? value,
+                                        ) {
+                                          setState(() {
+                                            dropDownBarangayValue = value;
+                                          });
+                                          //call another api
+                                        });
+                                  },
+                                ))
+                              ]),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
               ),
               Padding(
@@ -78,10 +236,14 @@ class SellerRegistrationPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  _handleButtonPress("Work");
+                                },
                                 style: TextButton.styleFrom(
                                     foregroundColor: Colors.black45,
-                                    backgroundColor: Colors.amberAccent),
+                                    backgroundColor: selectedButton == "Work"
+                                        ? Colors.blueAccent
+                                        : Colors.amberAccent),
                                 child: Text(
                                   "Work",
                                   style: TextStyle(color: Colors.black),
@@ -89,10 +251,14 @@ class SellerRegistrationPage extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
                               child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    _handleButtonPress("Home");
+                                  },
                                   style: TextButton.styleFrom(
                                       foregroundColor: Colors.black45,
-                                      backgroundColor: Colors.amberAccent),
+                                      backgroundColor: selectedButton == "Home"
+                                          ? Colors.blueAccent
+                                          : Colors.amberAccent),
                                   child: Text(
                                     "Home",
                                     style: TextStyle(color: Colors.black),
@@ -113,7 +279,13 @@ class SellerRegistrationPage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500),
                         ),
-                        MySwitch(value: false, onChanged: (bool newValue) {})
+                        MySwitch(
+                            value: defaultAddress,
+                            onChanged: (dynamic value) {
+                              setState(() {
+                                defaultAddress = value;
+                              });
+                            })
                       ],
                     ),
                     Row(
@@ -124,7 +296,13 @@ class SellerRegistrationPage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500),
                         ),
-                        MySwitch(value: true, onChanged: (bool newValue) {})
+                        MySwitch(
+                            value: pickUpAddress,
+                            onChanged: (dynamic value) {
+                              setState(() {
+                                pickUpAddress = value;
+                              });
+                            })
                       ],
                     ),
                   ],
