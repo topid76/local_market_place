@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:local_marketplace/screens/widget/my_radio.dart';
 import 'package:local_marketplace/screens/widget/my_text_input.dart';
 
-class ProfileEditPage extends StatelessWidget {
+class ProfileEditPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _ProfileEditPageState();
+}
+
+class _ProfileEditPageState extends State<ProfileEditPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,12 +80,6 @@ class ProfileEditPage extends StatelessWidget {
                             label: "Female",
                             value: true,
                             groupValue: false,
-                            onChanged: (bool changeValue) {},
-                            style: TextStyle(fontSize: 18)),
-                        MyRadio(
-                            label: "Other",
-                            value: true,
-                            groupValue: true,
                             onChanged: (bool changeValue) {},
                             style: TextStyle(fontSize: 18)),
                       ],
