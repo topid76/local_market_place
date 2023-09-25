@@ -20,6 +20,7 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
   String? dropDownProvinceValue;
   String? dropDownMunicipalitiesValue;
   String? dropDownCitesValue;
+  String? dropDownBarangayValue;
   @override
   void initState() {
     getIt<AppNotifier>().getProvince();
@@ -123,7 +124,7 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Cities"),
+                      Text("City/Municipality"),
                       Container(
                         padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                         decoration: BoxDecoration(
@@ -148,6 +149,51 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                                       ) {
                                         setState(() {
                                           dropDownCitesValue = value;
+                                        });
+                                        //call another api
+                                        appNotifier
+                                            .getBarangayByCityOrMunicipality(
+                                                value!);
+                                        print(appNotifier);
+                                      });
+                                },
+                              ))
+                            ]),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Province"),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey.shade300)),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(child: Consumer<AppNotifier>(
+                                builder: (_, appNotifier, __) {
+                                  return DropdownButton<String>(
+                                      value: dropDownBarangayValue,
+                                      isExpanded: true,
+                                      underline: Container(),
+                                      items: appNotifier.barangay
+                                          .map((data) => DropdownMenuItem(
+                                                child: Text(data.name),
+                                                value: data.code,
+                                              ))
+                                          .toList(),
+                                      onChanged: (
+                                        String? value,
+                                      ) {
+                                        setState(() {
+                                          dropDownBarangayValue = value;
                                         });
                                         //call another api
                                       });

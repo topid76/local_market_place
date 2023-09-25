@@ -37,10 +37,11 @@ class AppNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List<Location>> getMunicipalitiesByProvince(String code) async {
-    final result = await _locationService.getAllMunicipalitiesByProvince(code);
-    return result;
-  }
+  // Future<List<Location>> getMunicipalitiesByProvince(String code) async {
+  //   final result = await _locationService.getAllMunicipalitiesByProvince(code);
+
+  //   return result;
+  // }
 
 // City set and get arrays
   List<Location> _cities = [];
@@ -51,11 +52,11 @@ class AppNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List<Location>> getCityByProvince(String code) async {
-    final result = await _locationService
-        .getAllCityByProvince(code); //change this toocitiies
-    return result;
-  }
+  // Future<List<Location>> getCityByProvince(String code) async {
+  //   final result = await _locationService
+  //       .getAllCityByProvince(code); //change this toocitiies
+  //   return result;
+  // }
 
   //municipalities and cities set get in combine
 
@@ -74,5 +75,22 @@ class AppNotifier extends ChangeNotifier {
     //Combine 2 arrays
     final combineMunCity = [...municipalities, ...cities];
     munCity = combineMunCity;
+    return munCity;
+  }
+//barangay
+
+  List<Location> _barangay = [];
+  List<Location> get barangay => _barangay;
+
+  set barangay(List<Location> barangay) {
+    _barangay = barangay;
+    notifyListeners();
+  }
+
+  Future getBarangayByCityOrMunicipality(String code) async {
+    final result =
+        await _locationService.getAllBarangayByMunicipalityOrCity(code);
+    barangay = result;
+    return barangay;
   }
 }

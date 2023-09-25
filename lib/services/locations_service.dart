@@ -57,7 +57,40 @@ class LocationService {
     }
   }
 
-  
+//NONE
+  Future<List<Location>> getAllBarangayByCity(String code) async {
+    final String url = '$CityAndMunicipality_URL/$code$BARANGAY_URL';
+    print(url);
+    try {
+      final response =
+          await _networkService.getRequest(url, baseUrl: LOCATION_API_BASE_URL);
+      List<dynamic> data = jsonDecode(response);
+      List<Location> cityBarangay =
+          data.map((json) => Location.fromJson(json)).toList();
+      return cityBarangay;
+    } on DioException catch (e) {
+      print(e.toString());
+      return [];
+    }
+  }
+
+  Future<List<Location>> getAllBarangayByMunicipalityOrCity(String code) async {
+    final String url = '$CityAndMunicipality_URL/$code$BARANGAY_URL';
+    print(url);
+    try {
+      final response =
+          await _networkService.getRequest(url, baseUrl: LOCATION_API_BASE_URL);
+      List<dynamic> data = jsonDecode(response);
+      List<Location> barangay =
+          data.map((json) => Location.fromJson(json)).toList();
+      return barangay;
+    } on DioException catch (e) {
+      print(e.toString());
+      return [];
+    }
+  }
+
+//TAMAN
 }
 
 
