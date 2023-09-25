@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/screens/widget/my_button.dart';
 import 'package:local_marketplace/screens/widget/my_datePicker.dart';
 
@@ -32,10 +33,16 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(ProfileRoute);
+            },
+            icon: Icon(Icons.arrow_back),
+          ),
           title: Text(
-        "Complete your Profile",
-        style: TextStyle(fontSize: 18),
-      )),
+            "Complete your Profile",
+            style: TextStyle(fontSize: 18),
+          )),
       body: SingleChildScrollView(
         child: Padding(
             padding: EdgeInsets.all(15),

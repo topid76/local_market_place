@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:local_marketplace/common/dependency_locator.dart';
 import 'package:local_marketplace/notifiers/app_notifier.dart';
+import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/screens/shop_registration_page.dart';
 import 'package:local_marketplace/screens/widget/my_button.dart';
 import 'package:local_marketplace/screens/widget/my_checkbox.dart';
@@ -41,7 +42,9 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed(ShopRegistrationRoute);
+          },
         ),
         title: Text("Shop Information"),
       ),

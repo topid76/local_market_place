@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/screens/widget/my_card.dart';
 
 class ProductViewPage extends StatelessWidget {
@@ -8,43 +9,63 @@ class ProductViewPage extends StatelessWidget {
     return Container(
       child: GridView.count(
         scrollDirection: Axis.vertical,
-        childAspectRatio: 3 / 6,
+        childAspectRatio: 4 / 8,
         crossAxisCount: 2,
         padding: EdgeInsets.all(10),
         crossAxisSpacing: 20,
         mainAxisSpacing: 20,
         primary: false,
         children: [
-          myCard(
-            img:
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx6b6oNRWVPeoE01PbyMZ5svvqfJFdGz0l-42ECfvP7ttKhQPQBq2ZQSRKuMqluaom9qI&usqp=CAU",
-            text: "Strawberry",
-            price: 21.09,
-            sold: 23.1,
-            location: 'Cagayan de Oro',
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed(RegistrationRoute);
+            },
+            child: myCard(
+              img:
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx6b6oNRWVPeoE01PbyMZ5svvqfJFdGz0l-42ECfvP7ttKhQPQBq2ZQSRKuMqluaom9qI&usqp=CAU",
+              text: "Strawberry",
+              price: 21.09,
+              sold: 23.1,
+              location: 'Cagayan de Oro',
+            ),
           ),
-          myCard(
-            img:
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx6b6oNRWVPeoE01PbyMZ5svvqfJFdGz0l-42ECfvP7ttKhQPQBq2ZQSRKuMqluaom9qI&usqp=CAU",
-            text: "Orage",
-            price: 21.09,
-            sold: 23.1,
-            location: 'Cagayan de Oro',
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed(RegistrationRoute);
+            },
+            child: myCard(
+              img:
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx6b6oNRWVPeoE01PbyMZ5svvqfJFdGz0l-42ECfvP7ttKhQPQBq2ZQSRKuMqluaom9qI&usqp=CAU",
+              text: "Orage",
+              price: 21.09,
+              sold: 23.1,
+              location: 'Cagayan de Oro',
+            ),
           ),
-          myCard(
-            img:
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx6b6oNRWVPeoE01PbyMZ5svvqfJFdGz0l-42ECfvP7ttKhQPQBq2ZQSRKuMqluaom9qI&usqp=CAU",
-            text: "Basket",
-            price: 21.09,
-            sold: 23.1,
-            location: 'Cagayan de Oro',
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed(RegistrationRoute);
+            },
+            child: myCard(
+              img:
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx6b6oNRWVPeoE01PbyMZ5svvqfJFdGz0l-42ECfvP7ttKhQPQBq2ZQSRKuMqluaom9qI&usqp=CAU",
+              text: "Basket",
+              price: 21.09,
+              sold: 23.1,
+              location: 'Cagayan de Oro',
+            ),
           ),
-          myCard(
-            img: "https://cf.shopee.ph/file/7c571766ada986fef5208314e9c6fa95",
-            text: "Bukag",
-            price: 21.09,
-            sold: 23.1,
-            location: 'Cagayan de Oro',
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed(RegistrationRoute);
+            },
+            child: myCard(
+              img: "https://cf.shopee.ph/file/7c571766ada986fef5208314e9c6fa95",
+              text: "Bukag",
+              price: 21.09,
+              sold: 23.1,
+              location: 'Cagayan de Oro',
+            ),
           ),
           myCard(
             img:

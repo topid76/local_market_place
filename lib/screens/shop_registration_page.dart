@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:local_marketplace/common/dependency_locator.dart';
 import 'package:local_marketplace/notifiers/app_notifier.dart';
+import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/screens/widget/my_button.dart';
 import 'package:local_marketplace/screens/widget/my_radio.dart';
 import 'package:local_marketplace/screens/widget/my_switch.dart';
@@ -37,7 +38,9 @@ class _SellerRegistrationState extends State<SellerRegistrationPage> {
     return (Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(ProfileRoute);
+            },
             icon: Icon(
               Icons.close,
               size: 30,
@@ -318,7 +321,9 @@ class _SellerRegistrationState extends State<SellerRegistrationPage> {
                       width: 300,
                       height: 50,
                       child: MyButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(ShopInformationRoute);
+                        },
                         label: "Next",
                         backgroundColor: Colors.blueAccent,
                         style: TextStyle(

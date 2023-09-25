@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/screens/widget/my_button.dart';
 import 'package:local_marketplace/screens/widget/my_text_input.dart';
 
@@ -86,7 +87,9 @@ class RegistrationPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     MyButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(MainRoute);
+                      },
                       backgroundColor: Colors.green[600],
                       label: "Sign Up",
                       style: TextStyle(color: Colors.black),

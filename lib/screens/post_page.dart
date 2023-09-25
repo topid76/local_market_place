@@ -58,12 +58,12 @@ class PostPage extends StatelessWidget {
           favorite_button: () {},
           favorite_icon: Icon(
             Icons.favorite_border,
-            size: 30,
+            size: 25,
           ),
           share_button: () {},
           share_icon: Icon(
             Icons.comment_outlined,
-            size: 30,
+            size: 25,
           ),
         ),
         MyPostCard(

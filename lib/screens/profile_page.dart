@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_marketplace/bottombar/bottom_bar.dart';
+import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/screens/widget/my_profile.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -7,10 +8,19 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed(MainRoute);
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
         actions: [
-          Icon(
-            Icons.settings,
-            size: 40,
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(SettingsRoute);
+            },
+            icon: Icon(Icons.settings),
+            iconSize: 30,
           )
         ],
       ),
@@ -141,7 +151,10 @@ class ProfilePage extends StatelessWidget {
                               color: Colors.black,
                             )),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pushNamed(ShopRegistrationRoute);
+                            },
                             child: Text(
                               "Start Selling",
                               style: TextStyle(

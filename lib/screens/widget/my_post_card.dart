@@ -55,7 +55,7 @@ class MyPostCard extends StatelessWidget {
                         Text(
                           displayName,
                           style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.w500),
+                              fontSize: 15, fontWeight: FontWeight.w500),
                         ),
                         Text(
                           getCurrentDataTime(),
@@ -76,7 +76,7 @@ class MyPostCard extends StatelessWidget {
                   posted_text,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 23),
+                  style: TextStyle(fontSize: 13),
                 ),
               ),
             ],
