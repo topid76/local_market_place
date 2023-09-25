@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:local_marketplace/screens/widget/my_radio.dart';
 import 'package:local_marketplace/screens/widget/my_text_input.dart';
 
+enum Gender { male, female }
+
 class ProfileEditPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _ProfileEditPageState();
 }
 
 class _ProfileEditPageState extends State<ProfileEditPage> {
+  Gender selectedGender = Gender.male;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,15 +75,25 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                       children: [
                         MyRadio(
                             label: "Male",
-                            value: true,
-                            groupValue: false,
-                            onChanged: (bool changeValue) {},
+                            value: Gender.male,
+                            groupValue: selectedGender,
+                            onChanged: (dynamic value) {
+                              setState(() {
+                                selectedGender = value;
+                                print(value);
+                              });
+                            },
                             style: TextStyle(fontSize: 18)),
                         MyRadio(
                             label: "Female",
-                            value: true,
-                            groupValue: false,
-                            onChanged: (bool changeValue) {},
+                            value: Gender.female,
+                            groupValue: selectedGender,
+                            onChanged: (dynamic value) {
+                              print(value);
+                              setState(() {
+                                selectedGender = value;
+                              });
+                            },
                             style: TextStyle(fontSize: 18)),
                       ],
                     )

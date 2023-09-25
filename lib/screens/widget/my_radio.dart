@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class MyRadio extends StatelessWidget {
   final String label;
   final TextStyle style;
-  final bool value;
-  final bool groupValue;
-  final ValueChanged<bool> onChanged;
+  final dynamic value;
+  final dynamic groupValue;
+  final void Function(dynamic)? onChanged;
 
   MyRadio(
       {required this.label,
@@ -20,12 +20,8 @@ class MyRadio extends StatelessWidget {
       children: [
         Transform.scale(
           scale: 1.5,
-          child: Radio(
-              value: value,
-              groupValue: groupValue,
-              onChanged: (bool? newValue) {
-                onChanged(newValue!);
-              }),
+          child:
+              Radio(value: value, groupValue: groupValue, onChanged: onChanged),
         ),
         Padding(
           padding: EdgeInsets.all(10),

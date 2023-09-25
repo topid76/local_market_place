@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
 class MyCheckbox extends StatelessWidget {
-  bool value = false;
-  final ValueChanged<bool> onChanged;
+  final dynamic value;
+  final void Function(dynamic)? onChanged;
   MyCheckbox({required this.onChanged, required this.value});
 
   @override
   Widget build(BuildContext context) {
     return Checkbox(
-        value: this.value,
-        onChanged: (bool? changeValue) {
-          onChanged(changeValue!);
-        });
+      value: this.value,
+      onChanged: onChanged,
+    );
   }
 }

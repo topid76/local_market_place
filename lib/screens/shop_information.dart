@@ -11,6 +11,10 @@ import 'package:local_marketplace/screens/widget/my_radio.dart';
 import 'package:local_marketplace/screens/widget/my_text_input.dart';
 import 'package:provider/provider.dart';
 
+enum SellerType { Individual, Business }
+
+enum TinNumber { yes, no }
+
 class ShopInformationPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _ShopInformationPageState();
@@ -21,6 +25,11 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
   String? dropDownMunicipalitiesValue;
   String? dropDownCitesValue;
   String? dropDownBarangayValue;
+  bool checkBox = false;
+
+  SellerType SelectedType = SellerType.Individual;
+  TinNumber SelectedConfirmation = TinNumber.yes;
+
   @override
   void initState() {
     getIt<AppNotifier>().getProvince();
@@ -50,15 +59,24 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
               ),
               MyRadio(
                   label: "Individual",
-                  value: true,
-                  groupValue: true,
-                  onChanged: (bool changeValue) {},
+                  value: SellerType.Individual,
+                  groupValue: SelectedType,
+                  onChanged: (dynamic value) {
+                    print(value);
+                    setState(() {
+                      SelectedType = value;
+                    });
+                  },
                   style: TextStyle(fontSize: 18)),
               MyRadio(
                   label: "Business",
-                  value: true,
-                  groupValue: false,
-                  onChanged: (bool changeValue) {},
+                  value: SellerType.Business,
+                  groupValue: SelectedType,
+                  onChanged: (dynamic value) {
+                    setState(() {
+                      SelectedType = value;
+                    });
+                  },
                   style: TextStyle(fontSize: 18)),
               SizedBox(
                 height: 25,
@@ -219,15 +237,25 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                   ),
                   MyRadio(
                       label: "Yes",
-                      value: true,
-                      groupValue: false,
-                      onChanged: (bool changeValue) {},
+                      value: TinNumber.yes,
+                      groupValue: SelectedConfirmation,
+                      onChanged: (dynamic value) {
+                        print(value);
+                        setState(() {
+                          SelectedConfirmation = value;
+                        });
+                      },
                       style: TextStyle(fontSize: 18)),
                   MyRadio(
                       label: "No",
-                      value: true,
-                      groupValue: false,
-                      onChanged: (bool changeValue) {},
+                      value: TinNumber.no,
+                      groupValue: SelectedConfirmation,
+                      onChanged: (dynamic value) {
+                        print(value);
+                        setState(() {
+                          SelectedConfirmation = value;
+                        });
+                      },
                       style: TextStyle(fontSize: 18)),
                 ],
               ),
@@ -237,8 +265,12 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
               Row(
                 children: [
                   MyCheckbox(
-                    onChanged: (bool) {},
-                    value: false,
+                    value: checkBox,
+                    onChanged: (dynamic value) {
+                      setState(() {
+                        checkBox = value ?? false;
+                      });
+                    },
                   ),
                   Expanded(
                       child: Text(
