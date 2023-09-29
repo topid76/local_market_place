@@ -28,7 +28,7 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
   bool checkBox = false;
 
   SellerType SelectedType = SellerType.Individual;
-  TinNumber SelectedConfirmation = TinNumber.yes;
+  TinNumber SelectedConfirmation = TinNumber.no;
 
   @override
   void initState() {
@@ -189,7 +189,7 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Province"),
+                      Text("Barangay"),
                       Container(
                         padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                         decoration: BoxDecoration(
@@ -249,16 +249,23 @@ class _ShopInformationPageState extends State<ShopInformationPage> {
                       },
                       style: TextStyle(fontSize: 18)),
                   MyRadio(
-                      label: "No",
-                      value: TinNumber.no,
-                      groupValue: SelectedConfirmation,
-                      onChanged: (dynamic value) {
-                        print(value);
-                        setState(() {
-                          SelectedConfirmation = value;
-                        });
-                      },
-                      style: TextStyle(fontSize: 18)),
+                    label: "No",
+                    value: TinNumber.no,
+                    groupValue: SelectedConfirmation,
+                    onChanged: (dynamic value) {
+                      print(value);
+                      setState(() {
+                        SelectedConfirmation = value;
+                      });
+                    },
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  if (SelectedConfirmation == TinNumber.yes)
+                    Padding(
+                        padding: EdgeInsets.all(15),
+                        child: MyTextInput(
+                          hint: "Enter TIN Number",
+                        ))
                 ],
               ),
               SizedBox(

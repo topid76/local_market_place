@@ -12,3 +12,5 @@ const ShopInformationRoute = "/shop-information";
 const ProfileEditRoute = "/profile-edit";
 //Product
 const ViewRoute = "/view";
+
+const WholeSaleRoute = "/wholesale";

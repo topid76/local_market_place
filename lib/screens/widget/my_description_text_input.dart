@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 
-class MyTextInput extends StatelessWidget {
+class MyDescriptionTextInput extends StatelessWidget {
   final IconData? prefixIcon;
   final String label;
   final String hint;
 
-  MyTextInput({
-    this.prefixIcon,
-    this.label = "",
-    this.hint = "",
-  });
+  MyDescriptionTextInput({this.prefixIcon, this.label = "", this.hint = ""});
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      maxLines: null,
+      maxLines: 5,
       decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5.0),

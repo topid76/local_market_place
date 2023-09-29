@@ -11,6 +11,7 @@ import 'package:local_marketplace/screens/product_registration.dart';
 import 'package:local_marketplace/screens/shop_information.dart';
 import 'package:local_marketplace/screens/shop_registration_page.dart';
 import 'package:local_marketplace/screens/settings_page.dart';
+import 'package:local_marketplace/screens/whole_sale_page.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -23,7 +24,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case ProfileRoute:
       return MaterialPageRoute(builder: (_) => ProfilePage());
     case ProductRegistrationRoute:
-      return MaterialPageRoute(builder: (_) => ProductRegistratioPage());
+      return MaterialPageRoute(builder: (_) => ProductRegistrationPage());
     case SettingsRoute:
       return MaterialPageRoute(builder: (_) => SettingsPage());
     case ShopRegistrationRoute:
@@ -32,6 +33,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => ShopInformationPage());
     case ProfileEditRoute:
       return MaterialPageRoute(builder: (_) => ProfileEditPage());
+      case WholeSaleRoute:
+       return MaterialPageRoute(builder: (_) => WholeSalePage());
+
     default:
       return MaterialPageRoute(
           builder: (_) => const Scaffold(
