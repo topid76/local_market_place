@@ -4,16 +4,21 @@ class MyTextInput extends StatelessWidget {
   final IconData? prefixIcon;
   final String label;
   final String hint;
+  final bool obscureText;
+  final TextEditingController? textController;
 
-  MyTextInput({
-    this.prefixIcon,
-    this.label = "",
-    this.hint = "",
-  });
+  MyTextInput(
+      {this.prefixIcon,
+      this.label = "",
+      this.hint = "",
+      this.textController,
+      this.obscureText = false});
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      maxLines: null,
+      controller: textController,
+      maxLines: 1,
+      obscureText: obscureText,
       decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5.0),
@@ -27,7 +32,7 @@ class MyTextInput extends StatelessWidget {
           label: Text(
             label,
           ),
-          hintText: (hint),
+          hintText: hint,
           prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null),
     );
   }
