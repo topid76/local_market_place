@@ -23,6 +23,11 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   String? dropDownProvinceValue;
   String? dropDownMunCityValue;
   String? dropDownBarangayValue;
+
+  final TextEditingController fullname = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController phoneNumber = TextEditingController();
+
   @override
   void initState() {
     getIt<AppNotifier>().getProvince();
@@ -62,6 +67,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                 MyTextInput(
                   label: "Full name",
                   prefixIcon: Icons.person,
+                  textController: fullname,
                 ),
                 SizedBox(
                   height: 10,
@@ -69,6 +75,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                 MyTextInput(
                   label: "Email",
                   prefixIcon: Icons.email,
+                  textController: email,
                 ),
                 SizedBox(
                   height: 10,
@@ -76,6 +83,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                 MyTextInput(
                   label: "Contact Number",
                   prefixIcon: Icons.call,
+                  textController: phoneNumber,
                 ),
                 SizedBox(
                   height: 20,
@@ -255,30 +263,6 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                 ),
                 SizedBox(
                   height: 20,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Birthday:",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.blueGrey[300],
-                          fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [MyDatePicker()],
-                        ),
-                      ],
-                    )
-                  ],
                 ),
                 SizedBox(
                   height: 30,

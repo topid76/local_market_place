@@ -40,15 +40,21 @@ class MyProfile extends StatelessWidget {
             height: 10,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                address,
-                style: TextStyle(fontSize: 12, overflow: TextOverflow.ellipsis),
+              Expanded(
+                child: Text(
+                  address,
+                  style:
+                      TextStyle(fontSize: 12, overflow: TextOverflow.ellipsis),
+                ),
               ),
-              Text(
-                contactNumber,
-                style: TextStyle(fontSize: 12),
+              Expanded(
+                child: Text(
+                  contactNumber,
+                  style: TextStyle(fontSize: 12),
+                  overflow: TextOverflow.ellipsis,
+                ),
               )
             ],
           )

@@ -133,7 +133,31 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           backgroundColor: Colors.green[600],
                           label: "Sign Up",
                           style: TextStyle(color: Colors.black),
-                        )
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Already have an Account?",
+                          style: TextStyle(fontSize: 10),
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pushNamed(LoginRoute);
+                            },
+                            child: Text(
+                              "Login",
+                              style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.blue),
+                            ))
                       ],
                     )
                   ],

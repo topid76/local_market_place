@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/screens/checkout_page.dart';
+import 'package:local_marketplace/screens/commission.dart';
+import 'package:local_marketplace/screens/product_list_page.dart';
 import 'package:local_marketplace/screens/profile_edit_page.dart';
 import 'package:local_marketplace/screens/rating_page.dart';
 import 'package:local_marketplace/screens/rating_product_page.dart';
@@ -49,8 +51,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => ShopProfilePage());
     case ShoppingCartRoute:
       return MaterialPageRoute(builder: (_) => ShoppingCartPage());
-    case CheckOutRoute:
-      return MaterialPageRoute(builder: (_) => CheckOutPage());
+    case CommisionRoute:
+      return MaterialPageRoute(builder: (_) => CommissionPage());
+    case ProductListRoute:
+      return MaterialPageRoute(builder: (_) => ProductListPage());
+    case ProductViewRoute:
+      return MaterialPageRoute(builder: (_) => ProductPage());
 
     default:
       return MaterialPageRoute(

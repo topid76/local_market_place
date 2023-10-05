@@ -24,4 +24,14 @@ class AuthService {
       return e;
     }
   }
+
+  // Future register(Map<String, dynamic> data) async {
+  //   try {
+  //     await _networkService.postRequest(REGISTER_URL, body: data);
+  //     return true;
+  //   } on DioException catch (e) {
+  //     print(e.toString());
+  //     return e;
+  //   }
+  // }
 }

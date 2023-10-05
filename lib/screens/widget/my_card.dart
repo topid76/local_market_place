@@ -5,23 +5,19 @@ import 'package:flutter/material.dart';
 class myCard extends StatelessWidget {
   final String img;
   final String text;
-  var price;
-  var sold;
+  final dynamic price;
   final String location;
   var finalPrice;
-  var finalSold;
 
   myCard(
       {required this.img,
       required this.text,
       required this.price,
-      required this.sold,
       required this.location});
 
   @override
   void initState() {
     finalPrice = double.parse(price);
-    finalSold = double.parse(sold);
   }
 
   Widget build(BuildContext context) {

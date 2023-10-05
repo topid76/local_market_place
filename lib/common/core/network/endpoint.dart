@@ -10,3 +10,4 @@ const CityAndMunicipality_URL = "api/cities-municipalities";
 
 const REGISTER_URL = "/api/auth/register";
 const LOGIN_URL = "/api/auth/login";
+const EDIT_PROFILE_URL = "/api/users/edit-profile";

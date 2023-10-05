@@ -25,5 +25,9 @@ const ShopProfileRoute = "/shop-profile";
 //Shopping Cart
 const ShoppingCartRoute = "/shopping-cart";
 
-//
+//checkout
 const CheckOutRoute = "/check-out";
+//product list
+const ProductListRoute = "/product-list";
+const CommisionRoute = "/commision";
+const ProductViewRoute = "/product";

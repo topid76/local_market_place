@@ -212,13 +212,13 @@ class ProfilePage extends StatelessWidget {
                         IconButton(
                             onPressed: () {},
                             icon: Icon(
-                              Icons.notes_sharp,
+                              Icons.location_on_rounded,
                               size: 30,
                               color: Colors.black,
                             )),
                         TextButton(
                           onPressed: () {},
-                          child: Text("View Report",
+                          child: Text("Address",
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
