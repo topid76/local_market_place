@@ -8,10 +8,8 @@ class MyPostCard extends StatelessWidget {
   final String posted_text;
 
   final VoidCallback favorite_button;
-  final favorite_icon;
 
   final VoidCallback share_button;
-  final share_icon;
 
   String getCurrentDataTime() {
     final now = DateTime.now();
@@ -24,9 +22,7 @@ class MyPostCard extends StatelessWidget {
       required this.displayName,
       required this.posted_text,
       required this.favorite_button,
-      required this.favorite_icon,
-      required this.share_button,
-      required this.share_icon});
+      required this.share_button});
 
   @override
   Widget build(BuildContext context) {
@@ -85,8 +81,8 @@ class MyPostCard extends StatelessWidget {
               child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              MyIconButton(onPressed: favorite_button, icon: favorite_icon),
-              MyIconButton(onPressed: share_button, icon: share_icon)
+              MyIconButton(onPressed: favorite_button, icon: Icons.favorite),
+              MyIconButton(onPressed: share_button, icon: Icons.comment)
             ],
           ))
         ],

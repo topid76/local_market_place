@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MyIconButton extends StatelessWidget {
-  var onPressed;
-  final icon;
+  final VoidCallback onPressed;
+  final IconData icon;
+  
   MyIconButton({required this.onPressed, required this.icon});
   @override
   Widget build(BuildContext context) {
-    return IconButton(onPressed: onPressed, icon: icon);
+    return IconButton(onPressed: onPressed, icon: Icon(icon));
   }
 }

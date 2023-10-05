@@ -1,83 +1,133 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:local_marketplace/routes/constants.dart';
+import 'package:local_marketplace/screens/widget/my_button.dart';
+import 'package:local_marketplace/screens/widget/my_text_input.dart';
+import 'package:loader_overlay/loader_overlay.dart';
+import 'package:local_marketplace/services/user_auth/auth.service.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  State<StatefulWidget> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+
+  final Widget svg = SvgPicture.asset("assets/svgs/signup.svg",
+      height: 150,
+      alignment: Alignment.topRight,
+      colorFilter: ColorFilter.mode(Colors.red, BlendMode.srcIn),
+      semanticsLabel: 'Sign Up');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
+        extendBodyBehindAppBar: false,
+        body: SingleChildScrollView(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                "assets/images/logo.jpg",
-                height: 150,
+              SizedBox(
+                height: 30,
               ),
-            ],
-          ),
-          SizedBox(height: 30),
-          const Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text("Username or Email",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900)),
               Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter Username or Email'),
-                  )),
-              SizedBox(height: 20),
-              Text("Password",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900)),
-              Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter Password'),
-                  )),
-            ],
-          ),
-          Column(
-            children: [
-              TextButton(
-                  style: TextButton.styleFrom(
-                    fixedSize: const Size(120, 40),
-                    backgroundColor: Colors.blue,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(5),
+                      child: svg,
                     ),
-                  ),
-                  onPressed: null,
-                  child: const Text("Login",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white))),
+                    Text(
+                      "Get On Board !",
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "Create your profile to start your journey",
+                      style:
+                          TextStyle(fontSize: 12, fontWeight: FontWeight.w200),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width - 50,
+                          child: MyTextInput(
+                            prefixIcon: Icons.email,
+                            label: "Email",
+                            textController: email,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width - 50,
+                          child: MyTextInput(
+                            prefixIcon: Icons.password,
+                            label: "Password",
+                            textController: password,
+                            obscureText: true,
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 305,
+                          height: 50,
+                          child: MyButton(
+                            onPressed: () async {
+                              try {
+                                final AuthService _authService = AuthService();
+                                context.loaderOverlay.show();
+                                Map<String, dynamic> data = {
+                                  "password": password.text,
+                                  "email": email.text
+                                };
+
+                                print(data);
+
+                                //send data to backend
+                                await _authService.login(data);
+                                context.loaderOverlay.hide();
+                                Navigator.of(context).pushNamed(MainRoute);
+                              } catch (e) {
+                                print(e);
+                                context.loaderOverlay.hide();
+                                //show error message
+                              }
+                              // Navigator.of(context).pushNamed(MainRoute);
+                            },
+                            backgroundColor: Colors.green[600],
+                            label: "Login",
+                            style:
+                                TextStyle(color: Colors.white70, fontSize: 20),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Dont have an account?',
-                style: TextStyle(color: Colors.black.withOpacity(0.5)),
-              ),
-              const TextButton(
-                  onPressed: null,
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(color: Colors.black),
-                  ))
-            ],
-          )
-        ],
-      ),
-    );
+        ));
   }
 }

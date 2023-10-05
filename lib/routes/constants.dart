@@ -12,5 +12,18 @@ const ShopInformationRoute = "/shop-information";
 const ProfileEditRoute = "/profile-edit";
 //Product
 const ViewRoute = "/view";
+const ProductRoute = "/product-view";
 
 const WholeSaleRoute = "/wholesale";
+
+//Rate
+const RateRoute = "/rate";
+
+//Shop
+const ShopProfileRoute = "/shop-profile";
+
+//Shopping Cart
+const ShoppingCartRoute = "/shopping-cart";
+
+//
+const CheckOutRoute = "/check-out";

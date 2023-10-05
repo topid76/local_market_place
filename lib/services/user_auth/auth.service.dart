@@ -14,4 +14,14 @@ class AuthService {
       return e;
     }
   }
+
+  Future login(Map<String, dynamic> data) async {
+    try {
+      await _networkService.postRequest(LOGIN_URL, body: data);
+      return true;
+    } on DioException catch (e) {
+      print(e.toString());
+      return e;
+    }
+  }
 }

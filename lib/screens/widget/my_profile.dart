@@ -37,7 +37,7 @@ class MyProfile extends StatelessWidget {
             style: TextStyle(fontSize: 22),
           ),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

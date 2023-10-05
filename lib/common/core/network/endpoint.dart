@@ -9,3 +9,4 @@ const CityAndMunicipality_URL = "api/cities-municipalities";
 //API BACKEND
 
 const REGISTER_URL = "/api/auth/register";
+const LOGIN_URL = "/api/auth/login";
