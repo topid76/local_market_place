@@ -18,7 +18,7 @@ class ProductViewPage extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              Navigator.of(context).pushNamed(ProductViewRoute);
+              Navigator.of(context).pushNamed(RegistrationRoute);
             },
             child: myCard(
               img:

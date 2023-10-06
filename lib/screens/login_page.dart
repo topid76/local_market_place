@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:local_marketplace/common/dependency_locator.dart';
+import 'package:local_marketplace/notifiers/app_notifier.dart';
 import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/screens/widget/my_button.dart';
 import 'package:local_marketplace/screens/widget/my_text_input.dart';
@@ -105,7 +107,16 @@ class _LoginPageState extends State<LoginPage> {
                                 print(data);
 
                                 //send data to backend
-                                await _authService.login(data);
+                                final Map<String, dynamic> result =
+                                    await _authService.login(data);
+                                print(result);
+                                getIt<AppNotifier>().currentToken =
+                                    result["accessToken"];
+                                print(getIt<AppNotifier>().currentToken);
+
+                                await getIt<AppNotifier>().init();
+                                
+                                print("done called init");
                                 context.loaderOverlay.hide();
                                 Navigator.of(context).pushNamed(MainRoute);
                               } catch (e) {

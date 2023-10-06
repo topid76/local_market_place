@@ -18,7 +18,7 @@ class ShopProfilePage extends StatelessWidget {
                   "https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg",
               fullName: "Shop Name",
               address: "Address",
-              contactNumber: "Contact Number"),
+              phoneNumber: "Contact Number"),
           SizedBox(
             height: 15,
           ),

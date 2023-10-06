@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:local_marketplace/common/core/network/endpoint.dart';
 import 'package:local_marketplace/common/core/network/index.dart';
 import 'package:dio/dio.dart';
@@ -15,23 +17,14 @@ class AuthService {
     }
   }
 
-  Future login(Map<String, dynamic> data) async {
+  Future<dynamic> login(Map<String, dynamic>? data) async {
     try {
-      await _networkService.postRequest(LOGIN_URL, body: data);
-      return true;
+      final result = await _networkService.postRequest(LOGIN_URL, body: data);
+      return jsonDecode(result.toString());
     } on DioException catch (e) {
-      print(e.toString());
-      return e;
+      final decoded = jsonDecode(e.response.toString());
+      print(e);
+      throw (decoded["error"]);
     }
   }
-
-  // Future register(Map<String, dynamic> data) async {
-  //   try {
-  //     await _networkService.postRequest(REGISTER_URL, body: data);
-  //     return true;
-  //   } on DioException catch (e) {
-  //     print(e.toString());
-  //     return e;
-  //   }
-  // }
 }

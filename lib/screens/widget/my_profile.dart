@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 
 class MyProfile extends StatelessWidget {
   final String profile;
-  final String fullName;
-  final String address;
-  final String contactNumber;
+  final String? fullName;
+  final String? address;
+  final String? phoneNumber;
 
   MyProfile(
-      {required this.profile,
-      required this.fullName,
-      required this.address,
-      required this.contactNumber});
+      {required this.profile, this.fullName, this.address, this.phoneNumber});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -33,7 +30,7 @@ class MyProfile extends StatelessWidget {
             ],
           ),
           Text(
-            fullName,
+            "$fullName",
             style: TextStyle(fontSize: 22),
           ),
           SizedBox(
@@ -44,14 +41,14 @@ class MyProfile extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  address,
+                  "$address",
                   style:
                       TextStyle(fontSize: 12, overflow: TextOverflow.ellipsis),
                 ),
               ),
               Expanded(
                 child: Text(
-                  contactNumber,
+                  "$phoneNumber",
                   style: TextStyle(fontSize: 12),
                   overflow: TextOverflow.ellipsis,
                 ),

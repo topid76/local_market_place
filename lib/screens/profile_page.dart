@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:local_marketplace/bottombar/bottom_bar.dart';
+import 'package:local_marketplace/models/user/user.dart';
+import 'package:local_marketplace/notifiers/app_notifier.dart';
 import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/screens/widget/my_profile.dart';
+
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -27,12 +31,16 @@ class ProfilePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            MyProfile(
-              profile:
-                  "https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-mediumSquareAt3X-v2.jpg",
-              fullName: "Jay Kim Lusing",
-              address: "Opol Misamis Oriental",
-              contactNumber: "0966 296 4893",
+            Consumer<AppNotifier>(
+              builder: (_, appNotifier, __) {
+                User user = appNotifier.currentUser;
+                return MyProfile(
+                    profile:
+                        "https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg",
+                    fullName: user.fullName,
+                    address: user.address,
+                    phoneNumber: user.phoneNumber);
+              },
             ),
             Column(
               children: [

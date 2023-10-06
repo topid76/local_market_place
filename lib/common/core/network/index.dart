@@ -26,7 +26,7 @@ class NetworkService {
     String? baseUrl,
     Map<String, String>? queryParameters,
   }) async {
-    Uri endpoint = Uri.https(baseUrl ?? _baseUrl, url, queryParameters);
+    Uri endpoint = Uri.http(baseUrl ?? _baseUrl, url, queryParameters);
     Response response = await _dio.getUri(endpoint);
 
     return response.data;
@@ -63,7 +63,7 @@ class NetworkService {
     Map<String, dynamic>? body,
   }) async {
     Uri endpoint = Uri.http(_baseUrl, url);
-    Response response = await _dio.patchUri(endpoint, data: body ?? {});
+    Response response = await _dio.putUri(endpoint, data: body ?? {});
 
     return response;
   }

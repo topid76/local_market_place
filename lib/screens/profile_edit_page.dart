@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:local_marketplace/models/user/user.dart';
 import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/screens/widget/my_button.dart';
-import 'package:local_marketplace/screens/widget/my_datePicker.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 
 import 'package:local_marketplace/screens/widget/my_radio.dart';
 import 'package:local_marketplace/screens/widget/my_text_input.dart';
+import 'package:local_marketplace/services/user/user.service.dart';
 
 import '../notifiers/app_notifier.dart';
 import 'package:local_marketplace/common/dependency_locator.dart';
 import 'package:provider/provider.dart';
+
+import '../services/user_auth/auth.service.dart';
 
 enum Gender { male, female }
 
@@ -122,13 +126,16 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                                               value: data.code,
                                             ))
                                         .toList(),
-                                    onChanged: (String? value) {
+                                    onChanged: (String? value) async {
                                       setState(() {
                                         dropDownProvinceValue = value;
                                       });
                                       // call another api
-                                      appNotifier.getMunCityByProvince(value!);
-                                      print(appNotifier);
+                                      context.loaderOverlay.show();
+                                      await appNotifier
+                                          .getMunCityByProvince(value!);
+                                      context.loaderOverlay.hide();
+                                      print(dropDownProvinceValue);
                                     });
                               },
                             ))
@@ -276,7 +283,68 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                           height: 50,
                           width: 250,
                           child: MyButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              try {
+                                print(getIt<AppNotifier>().province.length);
+                                final String province = getIt<AppNotifier>()
+                                    .province
+                                    .firstWhere((element) =>
+                                        element.code == dropDownProvinceValue)
+                                    .name;
+                                print(province);
+
+                                final String munCity = getIt<AppNotifier>()
+                                    .munCity
+                                    .firstWhere((element) =>
+                                        element.code == dropDownMunCityValue)
+                                    .name;
+                                print(munCity);
+
+                                final String barangay = getIt<AppNotifier>()
+                                    .barangay
+                                    .firstWhere((element) =>
+                                        element.code == dropDownBarangayValue)
+                                    .name;
+                                print(barangay);
+
+                                final UserService _userService = UserService();
+                                context.loaderOverlay.show();
+                                Map<String, dynamic> data = {
+                                  "fullName": fullname.text,
+                                  "email": email.text,
+                                  "phoneNumber": phoneNumber.text,
+                                  "gender": selectedGender.toString(),
+                                  "address": province + munCity + barangay
+                                };
+                                await _userService.editProfile(data);
+                                getIt<AppNotifier>().currentUser = User(
+                                    address: data["address"],
+                                    fullName: data["fullName"],
+                                    phoneNumber: data["phoneNumber"]);
+                                context.loaderOverlay.hide();
+                                Navigator.of(context).pushNamed(ProfileRoute);
+
+                                // final AuthService _authService = AuthService();
+                                // context.loaderOverlay.show();
+                                // Map<String, dynamic> data = {
+                                //   "fullname": fullname.text,
+                                //   "email": email.text,
+                                //   "phoneNumber": phoneNumber.text,
+                                //   "address": dropDownProvinceValue
+                                // };
+
+                                // print(data);
+
+                                // //send data to backend
+                                // await _authService.login(data);
+                                // context.loaderOverlay.hide();
+                                // Navigator.of(context).pushNamed(MainRoute);
+                              } catch (e) {
+                                print(e);
+                                context.loaderOverlay.hide();
+                                //show error message
+                              }
+                            },
                             label: "Save",
                             style: TextStyle(color: Colors.white),
                             backgroundColor: Colors.blue.shade400,

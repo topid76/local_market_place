@@ -1,9 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:local_marketplace/models/location_/region.dart';
+import 'package:local_marketplace/models/user/user.dart';
 import 'package:local_marketplace/services/locations_service.dart';
+import 'package:local_marketplace/services/user/user.service.dart';
 
 class AppNotifier extends ChangeNotifier {
   final LocationService _locationService = LocationService();
+  final UserService _userService = UserService();
+
+  //currentUser
+  User _currentUser = User();
+  User get currentUser => _currentUser;
+
+  set currentUser(User user) {
+    _currentUser = user;
+    notifyListeners();
+  }
+
   String _currentToken = "";
   String get currentToken => _currentToken;
 
@@ -92,5 +105,25 @@ class AppNotifier extends ChangeNotifier {
         await _locationService.getAllBarangayByMunicipalityOrCity(code);
     barangay = result;
     return barangay;
+  }
+
+  Future init() async {
+    try {
+      await fetchUserDetails();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future fetchUserDetails() async {
+    try {
+      final result = await _userService.getUserDetails();
+      currentUser = User(
+          fullName: result["fullName"],
+          phoneNumber: result["phoneNumber"],
+          address: result["address"]);
+    } catch (e) {
+      rethrow;
+    }
   }
 }
