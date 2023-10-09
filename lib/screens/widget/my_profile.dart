@@ -5,26 +5,43 @@ class MyProfile extends StatelessWidget {
   final String? fullName;
   final String? address;
   final String? phoneNumber;
+  final VoidCallback? onPressed;
 
   MyProfile(
-      {required this.profile, this.fullName, this.address, this.phoneNumber});
+      {required this.profile,
+      this.fullName,
+      this.address,
+      this.phoneNumber,
+      this.onPressed});
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       decoration: BoxDecoration(color: Color.fromARGB(153, 196, 239, 222)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Stack(
+            alignment: Alignment.bottomRight,
             children: [
               Padding(
                 padding: EdgeInsets.all(15),
                 child: CircleAvatar(
                   backgroundImage: NetworkImage(profile),
                   radius: 80,
+                ),
+              ),
+              Positioned(
+                bottom: 17,
+                right: 15,
+                child: IconButton(
+                  onPressed: onPressed,
+                  icon: Icon(
+                    Icons.add_a_photo, // Your add icon
+                    color: Colors.black, // Icon color
+                    size: 30, // Icon size
+                  ),
                 ),
               ),
             ],
@@ -42,8 +59,10 @@ class MyProfile extends StatelessWidget {
               Expanded(
                 child: Text(
                   "$address",
-                  style:
-                      TextStyle(fontSize: 12, overflow: TextOverflow.ellipsis),
+                  style: TextStyle(
+                    fontSize: 12,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ),
               Expanded(

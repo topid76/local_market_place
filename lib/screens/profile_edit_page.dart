@@ -314,7 +314,8 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                                   "email": email.text,
                                   "phoneNumber": phoneNumber.text,
                                   "gender": selectedGender.toString(),
-                                  "address": province + munCity + barangay
+                                  "address":
+                                      province + " " + munCity + " " + barangay
                                 };
                                 await _userService.editProfile(data);
                                 getIt<AppNotifier>().currentUser = User(

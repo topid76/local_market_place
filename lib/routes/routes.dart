@@ -57,6 +57,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => ProductListPage());
     case ProductViewRoute:
       return MaterialPageRoute(builder: (_) => ProductPage());
+    case CheckOutRoute:
+      return MaterialPageRoute(builder: (_) => CheckOutPage());
 
     default:
       return MaterialPageRoute(

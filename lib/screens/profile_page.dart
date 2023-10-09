@@ -35,11 +35,12 @@ class ProfilePage extends StatelessWidget {
               builder: (_, appNotifier, __) {
                 User user = appNotifier.currentUser;
                 return MyProfile(
-                    profile:
-                        "https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg",
-                    fullName: user.fullName,
-                    address: user.address,
-                    phoneNumber: user.phoneNumber);
+                  profile: "",
+                  fullName: user.fullName,
+                  address: user.address,
+                  phoneNumber: user.phoneNumber,
+                  onPressed: () {},
+                );
               },
             ),
             Column(

@@ -87,8 +87,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                       },
                     ),
                   ),
-                  if (selectedOption == "Meet Up" ||
-                      selectedOption == "Delivery")
+                  if (selectedOption == "Meet Up")
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
