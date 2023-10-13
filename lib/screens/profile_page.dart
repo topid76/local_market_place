@@ -1,13 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:local_marketplace/bottombar/bottom_bar.dart';
 import 'package:local_marketplace/models/user/user.dart';
 import 'package:local_marketplace/notifiers/app_notifier.dart';
 import 'package:local_marketplace/routes/constants.dart';
 import 'package:local_marketplace/screens/widget/my_profile.dart';
-
+import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:local_marketplace/services/user/user.service.dart';
+import 'package:loader_overlay/loader_overlay.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'dart:io';
 import 'package:provider/provider.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  late File imageFile;
+  CroppedFile? croppedFile;
+  Future _pickImage() async {
+    final pickImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    File? pickImageFile = pickImage != null ? File(pickImage.path) : null;
+
+    if (pickImageFile != null) {
+      croppedFile = await ImageCropper()
+          .cropImage(sourcePath: pickImageFile.path, aspectRatioPresets: [
+        CropAspectRatioPreset.square,
+      ]);
+
+      if (croppedFile != null) {
+        setState(() {
+          imageFile = File(croppedFile!.path);
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +71,9 @@ class ProfilePage extends StatelessWidget {
                   fullName: user.fullName,
                   address: user.address,
                   phoneNumber: user.phoneNumber,
-                  onPressed: () {},
+                  onPressed: () async {
+                    _pickImage();
+                  },
                 );
               },
             ),

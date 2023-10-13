@@ -1,12 +1,14 @@
 import 'dart:convert';
-
+import 'dart:io';
 import 'package:local_marketplace/common/core/network/endpoint.dart';
 import 'package:local_marketplace/common/core/network/index.dart';
-
+import 'package:image_cropper/image_cropper.dart';
 import 'package:dio/dio.dart';
 
 class UserService {
   final NetworkService _networkService = NetworkService();
+  
+  
 
   Future editProfile(Map<String, dynamic> data) async {
     try {
@@ -30,5 +32,20 @@ class UserService {
       throw false;
     }
   }
-  
+
+  Future<dynamic> uploadImage(Map<File, dynamic> data) async {
+    try {
+      final result = await _networkService.postRequest(USERS_URL, body: data);
+    } on DioException catch (e) {
+      print(e);
+    }
+  }
+
+  Future<dynamic> saveImageProfile(
+      CroppedFile? croppedFile, Map<String, dynamic> data) async {
+    String url = PROFILE_URL;
+    try{
+
+    }
+  }
 }

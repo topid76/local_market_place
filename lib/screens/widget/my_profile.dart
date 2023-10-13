@@ -28,7 +28,7 @@ class MyProfile extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(15),
                 child: CircleAvatar(
-                  backgroundImage: NetworkImage(profile),
+                  backgroundImage: profile.isNotEmpty ?  NetworkImage(profile): null,
                   radius: 80,
                 ),
               ),
