@@ -5,7 +5,7 @@ import 'package:local_marketplace/common/dependency_locator.dart';
 import 'package:dio/dio.dart';
 
 class NetworkService {
-  final String _baseUrl = "192.168.1.13:3000";
+  final String _baseUrl = "192.168.1.4:3000";
   late Dio _dio;
   NetworkService() {
     _dio = Dio(_options)..interceptors.add(getIt<AppInterceptor>());

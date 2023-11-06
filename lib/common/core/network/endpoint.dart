@@ -11,3 +11,6 @@ const CityAndMunicipality_URL = "api/cities-municipalities";
 const REGISTER_URL = "/api/auth/register";
 const LOGIN_URL = "/api/auth/login";
 const USERS_URL = "/api/users";
+
+const PRODUCT_URL = "/api/product";
+const CATEGORY_URL = "/api/category";
