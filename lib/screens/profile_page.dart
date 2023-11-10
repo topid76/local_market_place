@@ -67,12 +67,13 @@ class _ProfilePageState extends State<ProfilePage> {
               builder: (_, appNotifier, __) {
                 User user = appNotifier.currentUser;
                 return MyProfile(
-                  profile: "",
+                  profile: user.profilePic,
                   fullName: user.fullName,
                   address: user.address,
                   phoneNumber: user.phoneNumber,
                   onPressed: () async {
                     _pickImage();
+                    print(_pickImage());
                   },
                 );
               },

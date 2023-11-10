@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class MyProfile extends StatelessWidget {
-  final String profile;
+  final String? profile;
   final String? fullName;
   final String? address;
   final String? phoneNumber;
   final VoidCallback? onPressed;
 
   MyProfile(
-      {required this.profile,
+      {this.profile,
       this.fullName,
       this.address,
       this.phoneNumber,
@@ -25,10 +25,13 @@ class MyProfile extends StatelessWidget {
           Stack(
             alignment: Alignment.bottomRight,
             children: [
-              Padding(
+              Padding(    
                 padding: EdgeInsets.all(15),
                 child: CircleAvatar(
-                  backgroundImage: profile.isNotEmpty ?  NetworkImage(profile): null,
+                  backgroundImage: "$profile".isNotEmpty
+                      ? NetworkImage("$profile")
+                      : NetworkImage(
+                          "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg"),
                   radius: 80,
                 ),
               ),

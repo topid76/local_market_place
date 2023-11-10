@@ -121,7 +121,8 @@ class AppNotifier extends ChangeNotifier {
       currentUser = User(
           fullName: result["fullName"],
           phoneNumber: result["phoneNumber"],
-          address: result["address"]);
+          address: result["address"],
+          profilePic: result["imageUrl"]);
     } catch (e) {
       rethrow;
     }

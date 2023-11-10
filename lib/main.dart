@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         overlayColor: Colors.grey[600]!.withOpacity(0.6),
         child: MaterialApp(
           onGenerateRoute: generateRoute,
-          initialRoute: MainRoute,
+          initialRoute: ShoppingCartRoute,
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(

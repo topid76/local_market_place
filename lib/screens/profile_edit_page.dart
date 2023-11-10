@@ -319,6 +319,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                                 };
                                 await _userService.editProfile(data);
                                 getIt<AppNotifier>().currentUser = User(
+                                 
                                     address: data["address"],
                                     fullName: data["fullName"],
                                     phoneNumber: data["phoneNumber"]);

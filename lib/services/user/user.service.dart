@@ -4,11 +4,10 @@ import 'package:local_marketplace/common/core/network/endpoint.dart';
 import 'package:local_marketplace/common/core/network/index.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:dio/dio.dart';
+import 'package:path/path.dart';
 
 class UserService {
   final NetworkService _networkService = NetworkService();
-  
-  
 
   Future editProfile(Map<String, dynamic> data) async {
     try {
@@ -33,19 +32,25 @@ class UserService {
     }
   }
 
-  Future<dynamic> uploadImage(Map<File, dynamic> data) async {
-    try {
-      final result = await _networkService.postRequest(USERS_URL, body: data);
-    } on DioException catch (e) {
-      print(e);
-    }
-  }
-
   Future<dynamic> saveImageProfile(
       CroppedFile? croppedFile, Map<String, dynamic> data) async {
-    String url = PROFILE_URL;
-    try{
-
+    String url = USERS_URL;
+    try {
+      if (croppedFile != null) {
+        String fileName = basename(croppedFile.path);
+        List<int> bytes = await croppedFile.readAsBytes();
+        var formData = FormData.fromMap({
+          ...data,
+          "imageUrl": MultipartFile.fromBytes(bytes, filename: fileName)
+        });
+        await _networkService.postRequest(url, body: formData);
+        print(_networkService);
+      } else {
+        await _networkService.postRequest(url, body: data);
+      }
+      return true;
+    } on DioException catch (e) {
+      return false;
     }
   }
 }
